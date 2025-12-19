@@ -85,7 +85,7 @@ local RootPart = Player.Character.HumanoidRootPart
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "TPS: Street Soccer Script" .. Fluent.Version,
+    Title = "Eclipse HUB" .. Fluent.Version,
     SubTitle = "by Wisteria",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
@@ -107,7 +107,7 @@ local Tabs = {
 
 Tabs.Info:AddParagraph({
 Title = "Info",
-Content = "This the Paid Version of Turbo's TPS: Street Soccer Script.\nMake Sure to enable Anti-Cheat Bypasser before using this script!"
+Content = "This the Free Version of WIsteria's TPS: Street Soccer Script.\nMake Sure to enable Anti-Cheat Bypasser before using this script!"
 })
 
     Tabs.AntiKB:AddButton({
