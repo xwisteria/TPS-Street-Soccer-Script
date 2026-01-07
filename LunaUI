@@ -1,4 +1,27 @@
---[[ why is bro stealing my ui ]]
+--[[
+
+Luna Interface Suite
+by Nebula Softworks
+Executor not supported
+Main Credits
+
+Hunter (Nebula Softworks) | Designing And Programming | Main Developer
+JustHey (Nebula Softworks) | Configurations, Bug Fixing And More! | Co Developer
+Throit | Color Picker
+Wally | Dragging And Certain Functions
+Sirius | PCall Parsing, Notifications, Slider And Home Tab
+Luna Executor | Original UI
+
+
+Extra Credits / Provided Certain Elements
+
+Pookie Pepelss | Bug Tester
+Inori | Configuration Concept
+Latte Softworks and qweery | Lucide Icons And Material Icons
+kirill9655 | Loading Circle
+Deity/dp4pv/x64x70 | Certain Scripting and Testing ig
+
+]]
 
 local Release = "Prerelease Beta 6.1"
 
@@ -4230,14 +4253,32 @@ function Luna:CreateWindow(WindowSettings)
 					SafeCallback( Color3.fromRGB(r,g,b))
 				end)
 				--RGB
-				local function rgbBoxes(box,toChange)
-					local value = tonumber(box.Text) 
-					local color = Color3.fromHSV(h,s,v) 
-					local oldR,oldG,oldB = math.floor((color.R*255)+0.5),math.floor((color.G*255)+0.5),math.floor((color.B*255)+0.5)
-					local save 
-					if toChange == "R" then save = oldR;oldR = value elseif toChange == "G" then save = oldG;oldG = value else save = oldB;oldB = value end
-					if value then 
-						value = math.clamp(value,0,255)
+local function rgbBoxes(box, toChange)
+    local value = tonumber(box.Text) or 0
+
+    -- Clamp value first
+    if SliderSettings and SliderSettings.Range then
+        value = math.clamp(value, SliderSettings.Range[1], SliderSettings.Range[2])
+    end
+
+    local color = Color3.fromHSV(h, s, v)
+    local oldR = math.floor(color.R*255 + 0.5)
+    local oldG = math.floor(color.G*255 + 0.5)
+    local oldB = math.floor(color.B*255 + 0.5)
+
+    if toChange == "R" then
+        oldR = value
+    elseif toChange == "G" then
+        oldG = value
+    else
+        oldB = value
+    end
+
+    -- Update color with new RGB values
+    color = Color3.fromRGB(oldR, oldG, oldB)
+    -- Apply 'color' to your UI element or object here
+end
+
 						h,s,v = Color3.fromRGB(oldR,oldG,oldB):ToHSV()
 						setDisplay()
 					else 
@@ -6015,7 +6056,7 @@ function Luna:CreateWindow(WindowSettings)
 				local save 
 				if toChange == "R" then save = oldR;oldR = value elseif toChange == "G" then save = oldG;oldG = value else save = oldB;oldB = value end
 				if value then 
-					value = math.clamp(value,0,255)
+				value = math.clamp(value, 0, 25)
 					h,s,v = Color3.fromRGB(oldR,oldG,oldB):ToHSV()
 					setDisplay()
 				else 
