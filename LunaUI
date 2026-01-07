@@ -4566,9 +4566,9 @@ function Luna:CreateWindow(WindowSettings)
 
 			SliderSettings = Kwargify({
 				Name = "Slider",
-				Range = {0, 200},
+				Range = {0, 25},
 				Increment = 1,
-				CurrentValue = 100,
+				CurrentValue = 0,
 				Callback = function(Value)
 
 				end,
@@ -6808,9 +6808,9 @@ if isStudio then
 	})
 	Tabs.Main:CreateSlider({
 		Name = "Slider Example",
-		Range = {0, 200},
+		Range = {0, 25},
 		Increment = 0.1,
-		CurrentValue = 100,
+		CurrentValue = 0,
 		Flag = "Slider",
 	})
 	Tabs.Main:CreateToggle({
